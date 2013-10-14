@@ -1,0 +1,33 @@
+<html>
+<head>
+<style>
+img { 
+display: none; 
+-moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+transform: scale(-1, 1);
+}
+input, button { display: block; }
+</style>
+<script>
+function mirror(){
+var src = document.getElementById("gif").value;
+document.getElementById("mirrored").src = src;
+document.getElementById("mirrored").style.display = "block";
+document.getElementById("gif").style.display="none";
+document.getElementById("btn").style.display="none";
+window.location.hash=src;
+}
+function rdy(){
+if(window.location.hash){
+document.getElementById("gif").value=window.location.hash.substring(1);
+mirror();
+}
+}
+</script>
+</head>
+<body onload="rdy()">
+<img id="mirrored" />
+<input id="gif" /><button id="btn" onclick="mirror()">Mirror</button>
+</body>
+</html>
